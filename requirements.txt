@@ -4,3 +4,4 @@ sqlalchemy  # If using a database
 requests
 
 torch
+torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
