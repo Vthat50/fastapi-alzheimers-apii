@@ -12,3 +12,6 @@ scikit-learn
 pydantic
 python-multipart
 
+sqlalchemy
+
+requests
