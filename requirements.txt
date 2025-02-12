@@ -1,7 +1,4 @@
-# PyTorch (without +cpu suffix)
-torch==2.1.0
-torchvision==0.16.0
-torchaudio==2.1.0
+
 
 # Web framework & ASGI server
 fastapi
