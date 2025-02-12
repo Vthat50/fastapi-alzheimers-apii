@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException, Depends, File, UploadFile
+from fastapi import FastAPI, HTTPException, Depends, File, UploadFile 
 from pydantic import BaseModel
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.orm import sessionmaker, Session
@@ -31,19 +31,21 @@ Base.metadata.create_all(bind=engine)
 # 2️⃣ **Heroku-Compatible Storage Paths**
 UPLOAD_DIR = "/app/mriT1/input"
 FREESURFER_OUTPUT_DIR = "/app/mriT1/freesurfer_output"
-MODEL_PATH = "/app/DeepSeek-Finetuned-Alzheimers"
 
 # Ensure directories exist (only locally, not on Heroku)
 if not os.getenv("DYNO"):  # Heroku doesn't allow writing to the filesystem
     os.makedirs(UPLOAD_DIR, exist_ok=True)
     os.makedirs(FREESURFER_OUTPUT_DIR, exist_ok=True)
 
-# 3️⃣ **Load DeepSeek Model & Tokenizer**
+# 3️⃣ **Fix: Load DeepSeek Model Correctly**
+MODEL_NAME = "deepseek-ai/deepseek-coder-1.3b-base"  # Update with correct HF model
+
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
 try:
-    tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH)
-    model = AutoModelForCausalLM.from_pretrained(MODEL_PATH).to(device)
+    tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
+    model = AutoModelForCausalLM.from_pretrained(MODEL_NAME).to(device)
+    print("✅ Model loaded successfully!")
 except Exception as e:
     print(f"⚠️ Model loading failed: {e}")
 
@@ -89,8 +91,6 @@ async def predict(input_text: str):
         return {"prediction": response_text}
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Prediction failed: {str(e)}")
-
-
 
 
 
