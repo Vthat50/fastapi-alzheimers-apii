@@ -15,7 +15,7 @@ pandas
 scikit-learn
 pydantic
 python-multipart
-
+transformers
 # Database (if using PostgreSQL)
 sqlalchemy
 psycopg2-binary
