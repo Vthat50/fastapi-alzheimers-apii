@@ -21,7 +21,7 @@ from sqlalchemy.orm import sessionmaker
 app = FastAPI()
 
 # Database connection setup
-DATABASE_URL = "postgresql://mri_user:yourpassword@localhost/mri_prediction_db"
+DATABASE_URL = os.getenv("postgres://ug8j501cbdf1p:pb2217cb07c6d0335cd573f91e6a5d1847f66466a525e9d1fba05d53613d5e4c8@cf980tnnkgv1bp.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/d4s1gt26vfkp6b")
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
