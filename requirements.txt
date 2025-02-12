@@ -1,9 +1,13 @@
-
-
 # Web framework & ASGI server
 fastapi
 uvicorn==0.24.0
 gunicorn==21.2.0
+
+# PyTorch (Install CPU version automatically)
+torch==2.1.0
+torchvision==0.16.0
+torchaudio==2.1.0
+--extra-index-url https://download.pytorch.org/whl/cpu
 
 # Common utilities
 numpy
@@ -12,6 +16,10 @@ scikit-learn
 pydantic
 python-multipart
 
+# Database (if using PostgreSQL)
 sqlalchemy
+psycopg2-binary
 
-requests
+# Additional utilities
+requests  # If making API calls
+
