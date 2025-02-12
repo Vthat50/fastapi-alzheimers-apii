@@ -1,12 +1,17 @@
-torch==2.1.0+cpu --index-url https://download.pytorch.org/whl/cpu
-torchvision==0.16.0+cpu --index-url https://download.pytorch.org/whl/cpu
-torchaudio==2.1.0+cpu --index-url https://download.pytorch.org/whl/cpu
+# PyTorch (without +cpu suffix)
+torch==2.1.0
+torchvision==0.16.0
+torchaudio==2.1.0
 
-uvicorn
+# Web framework & ASGI server
 fastapi
-gunicorn
+uvicorn==0.24.0
+gunicorn==21.2.0
+
+# Common utilities
 numpy
 pandas
 scikit-learn
 pydantic
 python-multipart
+
